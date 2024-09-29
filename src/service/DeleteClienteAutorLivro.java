@@ -1,57 +1,45 @@
 package service;
 
+import java.util.Iterator;
 import java.util.Scanner;
-
 import model.Main;
 
 public class DeleteClienteAutorLivro {
 
-    private String nomeDelete;
-
-    public void deleteClienteAutor(){
+    public void deleteClienteAutor() {
 
         ListarMetodos.listaPessoas();
 
         if (CadastroDePessoas.getListaPessoas().isEmpty()) {
-            System.out.println();
+            System.out.println("Nenhuma pessoa cadastrada.");
             Main.main(null);
+            // return; // Adicionei um return para evitar continuar após essa condição
         }
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nome para Exclusão: ");
-        setNomeDelete(scanner.nextLine().trim()); 
-
-        // setNomeDoLivroParaCompra(getVenda());
-
-        // boolean livroEncontrado = false;
+        String nomeDelete = scanner.nextLine().trim();
         
-        // // Percorre a lista de livros cadastrados
-        // for (model.Produto livro : CadastroDeLivros.getListaLivros()) {
-        //     // Comparação ignorando maiúsculas/minúsculas e removendo espaços em branco
-        //     if (livro.getNomeDoLivro().trim().equalsIgnoreCase(getNomeDoLivroParaCompra())) {
-        //         livroEncontrado = true;
-        //         if (livro.getEstoqueDoLivro() > 0) {
-        //             // Realiza a venda, subtrai uma unidade do estoque
-        //             livro.setEstoqueDoLivro(livro.getEstoqueDoLivro() - 1);
-        //             System.out.println("Venda realizada! Estoque atual de '" + livro.getNomeDoLivro() + "': " + livro.getEstoqueDoLivro());
-        //         } else {
-        //             System.out.println("Não é possível realizar a venda. O livro '" + livro.getNomeDoLivro() + "' está sem estoque.");
-        //         }
-        //         break; // Interrompe o loop após encontrar o livro
-        //     }
-        // }
-
-        // // Mensagem caso o livro não seja encontrado
-        // if (!livroEncontrado) {
-        //     System.out.println("O livro '" + nomeDoLivroParaCompra + "' não foi encontrado no catálogo.");
-        // }
+        if (removerPessoaPorNome(nomeDelete)) {
+            System.out.println("Pessoa " + nomeDelete + " excluída com sucesso!");
+        } else {
+            System.out.println("Pessoa não encontrada.");
+        }
     }
 
-    public String getNomeDelete() {
-        return nomeDelete;
+    private boolean removerPessoaPorNome(String nome) {
+        Iterator<model.Pessoa> iterator = CadastroDePessoas.getListaPessoas().iterator();
+        boolean encontrado = false;
+
+        while (iterator.hasNext()) {
+            model.Pessoa pessoa = iterator.next();
+            if (pessoa.getNomeDaPessoa().equalsIgnoreCase(nome)) { // Assumindo que você tem um método getNomeDaPessoa
+                iterator.remove();
+                encontrado = true;
+                break; // Para sair do loop após encontrar e remover
+            }
+        }
+        return encontrado;
     }
-    public void setNomeDelete(String nomeDelete) {
-        this.nomeDelete = nomeDelete;
-    }
-};
+}
 

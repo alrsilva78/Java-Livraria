@@ -79,7 +79,7 @@ public class CadastroDePessoas extends model.Pessoa implements interfaces.Start{
         System.out.println(getCadTipo() + " " + getCadNome() + " cadastrado com sucesso!");
         System.out.println();
 
-        while (!getConfirma().equalsIgnoreCase("s") && !getConfirma().equalsIgnoreCase("n")) {
+        while (!getConfirma().equalsIgnoreCase("s")&& !getConfirma().equalsIgnoreCase("n")) {
         System.out.println();
         System.out.print("Deseja cadastrar outra Pessoa [s/n]: ");
         setConfirma(scanner.nextLine().trim());
@@ -92,6 +92,7 @@ public class CadastroDePessoas extends model.Pessoa implements interfaces.Start{
             setContinuar("n"); 
             System.out.println();
             Scanner scannerReset = new Scanner(System.in);
+        
         }    
         else {
             System.out.println("Opção inválida. Tente novamente!");
@@ -99,6 +100,7 @@ public class CadastroDePessoas extends model.Pessoa implements interfaces.Start{
        
     }
         setConfirma("");
+        
     }
 }
 
