@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 import interfaces.Start;
 import service.CadastroDePessoas;
-import service.DeleteClienteAutorLivro;
+import service.DeleteClienteAutor;
+import service.DeleteLivro;
 import service.GerenciamentoDeVendas;
 import service.CadastroDeLivros;
 import service.ListarMetodos;
@@ -21,7 +22,8 @@ public class Main {
         cadastrodeLivrosInterface.seqIniciar();
 
         GerenciamentoDeVendas gerenciamentoDeVendas = new GerenciamentoDeVendas();
-        DeleteClienteAutorLivro deleteClienteAutorLivro = new DeleteClienteAutorLivro();
+        DeleteClienteAutor deleteClienteAutorLivro = new DeleteClienteAutor();
+        DeleteLivro deleteLivro = new DeleteLivro();
         CadastroDePessoas cadastroDePessoas = new CadastroDePessoas(null, null, 0, null);
         CadastroDeLivros cadastroDeLivros = new CadastroDeLivros(null, null, null, null, 0, 0);
 
@@ -50,34 +52,29 @@ public class Main {
                 case "1":
                     cadastroDePessoas.cadastroCliente();
                     break;
-
                 case "2":
                     cadastroDeLivros.CadastroLivro();
                     break;
-
                 case "3":
                     ListarMetodos.listaPessoas();
                     break;
-
                 case "4":
                     ListarMetodos.listaLivros();;
                     break;
-
                 case "5":
                     gerenciamentoDeVendas.vendaLivros();
-             
                     break;
                 case "6":
                     deleteClienteAutorLivro.deleteClienteAutor();
-
                     break;
-
+                case "7":
+                    deleteLivro.deleteLivro();
+                    break;
                 case "9":  
                     System.out.println("Encerrando o programa...");
                     break;
                 case "10":
                     break;
-
                 default:
                     System.out.println();
                     System.out.println("Opção inválida....tente novamente!");

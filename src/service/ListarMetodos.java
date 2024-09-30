@@ -64,6 +64,7 @@ public class ListarMetodos extends model.Pessoa{
     // Método para listar Livros cadastrados
     public static void listaLivros() {
         if (CadastroDeLivros.getListaLivros().isEmpty()) {
+            System.out.println();
             System.out.println("Ainda não há Livros cadastrados!");
         } else {
             System.out.println("Lista de Livros cadastrados:");

@@ -4,24 +4,26 @@ import java.util.Iterator;
 import java.util.Scanner;
 import model.Main;
 
-public class DeleteClienteAutorLivro {
+public class DeleteClienteAutor {
+
+    private String nomeDelete;
 
     public void deleteClienteAutor() {
 
         ListarMetodos.listaPessoas();
 
         if (CadastroDePessoas.getListaPessoas().isEmpty()) {
-            System.out.println("Nenhuma pessoa cadastrada.");
+            System.out.println();
             Main.main(null);
-            // return; // Adicionei um return para evitar continuar após essa condição
         }
 
         Scanner scanner = new Scanner(System.in);
+        System.out.println();
         System.out.print("Nome para Exclusão: ");
-        String nomeDelete = scanner.nextLine().trim();
+        setNomeDelete(scanner.nextLine().trim());
         
-        if (removerPessoaPorNome(nomeDelete)) {
-            System.out.println("Pessoa " + nomeDelete + " excluída com sucesso!");
+        if (removerPessoaPorNome(getNomeDelete())) {
+            System.out.println("Pessoa " + getNomeDelete() + " excluída com sucesso!");
         } else {
             System.out.println("Pessoa não encontrada.");
         }
@@ -33,13 +35,20 @@ public class DeleteClienteAutorLivro {
 
         while (iterator.hasNext()) {
             model.Pessoa pessoa = iterator.next();
-            if (pessoa.getNomeDaPessoa().equalsIgnoreCase(nome)) { // Assumindo que você tem um método getNomeDaPessoa
+            if (pessoa.getNomeDaPessoa().equalsIgnoreCase(nome)) { 
                 iterator.remove();
                 encontrado = true;
-                break; // Para sair do loop após encontrar e remover
+                break; 
             }
         }
         return encontrado;
+    }
+
+    public String getNomeDelete() {
+        return nomeDelete;
+    }
+    public void setNomeDelete(String nomeDelete) {
+        this.nomeDelete = nomeDelete;
     }
 }
 
