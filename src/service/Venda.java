@@ -1,12 +1,19 @@
 package service;
 
 import java.util.Scanner;
+import interfaces.TotalPagar;
 
-public class Venda {
+public class Venda implements TotalPagar {
 
     private String venda;
     private String nomeDoLivroParaCompra;
-    
+
+    public void totalPagar (){
+    }
+
+    public void totalPagar (double valor){
+        System.out.println( "Valor total a pagar = R$" + valor);
+    }
 
     public void venda() {
 
@@ -28,6 +35,7 @@ public class Venda {
                     // Realiza a venda, subtrai uma unidade do estoque
                     livro.setEstoqueDoLivro(livro.getEstoqueDoLivro() - 1);
                     System.out.println("Venda realizada! Estoque atual de '" + livro.getNomeDoLivro() + "': " + livro.getEstoqueDoLivro());
+                    totalPagar(livro.getValorDoLivro());
                 } else {
                     System.out.println("Não é possível realizar a venda. O livro '" + livro.getNomeDoLivro() + "' está sem estoque.");
                 }
@@ -55,6 +63,7 @@ public class Venda {
                     // Realiza a venda, subtrai uma unidade do estoque
                     livro.setEstoqueDoLivro(livro.getEstoqueDoLivro() - 1);
                     System.out.println("Venda realizada! Estoque atual de '" + livro.getNomeDoLivro() + "': " + livro.getEstoqueDoLivro());
+                    totalPagar(livro.getValorDoLivro());
                 } else {
                     System.out.println("Não é possível realizar a venda. O livro '" + livro.getNomeDoLivro() + "' está sem estoque.");
                 }

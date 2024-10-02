@@ -81,7 +81,7 @@ public class CadastroDePessoas extends model.Pessoa implements interfaces.Start{
 
         while (!getConfirma().equalsIgnoreCase("s")&& !getConfirma().equalsIgnoreCase("n")) {
         System.out.println();
-        System.out.print("Deseja cadastrar outra Pessoa [s/n]: ");
+        System.out.print("Deseja cadastrar outra Pessoa [s/n]?: ");
         setConfirma(scanner.nextLine().trim());
 
         if (getConfirma().equalsIgnoreCase("s")) {

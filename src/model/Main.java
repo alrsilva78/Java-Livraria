@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import interfaces.Start;
 import service.CadastroDePessoas;
+import service.CadastroEditora;
 import service.DeleteClienteAutor;
 import service.DeleteLivro;
 import service.GerenciamentoDeVendas;
@@ -26,6 +27,7 @@ public class Main {
         DeleteLivro deleteLivro = new DeleteLivro();
         CadastroDePessoas cadastroDePessoas = new CadastroDePessoas(null, null, 0, null);
         CadastroDeLivros cadastroDeLivros = new CadastroDeLivros(null, null, null, null, 0, 0);
+        CadastroEditora cadastroDeEditora = new CadastroEditora(null);
 
         String opcao;  
 
@@ -38,13 +40,15 @@ public class Main {
             System.out.println("==================================="); 
             System.out.println("Área de Cadastro");
             System.out.println("[1] -> Cadastro de Pessoas\n" +
-                               "[2] -> Cadastro de Livros\n" +
-                               "[3] -> Listar Pessoas Cadastradas\n" +
-                               "[4] -> Listar Livros Cadastrados\n" +
-                               "[5] -> Gerenciamento de Vendas\n" +
-                               "[6] -> Excluir Pessoas\n" +
-                               "[7] -> Excluir Livro\n" +
-                               "[9] -> Sair");
+                                "[2] -> Cadastro de Editora\n" +
+                                "[3] -> Cadastro de Livros\n" +
+                                "[4] -> Listar Pessoas Cadastradas\n" +
+                                "[5] -> Listar Editoras Cadastradas\n" +
+                                "[6] -> Listar Livros Cadastrados\n" +
+                                "[7] -> Gerenciamento de Vendas\n" +
+                                "[8] -> Excluir Pessoas\n" +
+                                "[9] -> Excluir Livro\n" +
+                                "[0] -> Sair");
             System.out.print("Opção: ");
             opcao = scanner.nextLine();
 
@@ -53,27 +57,35 @@ public class Main {
                     cadastroDePessoas.cadastroCliente();
                     break;
                 case "2":
-                    cadastroDeLivros.CadastroLivro();
+                    cadastroDeEditora.cadastroEditora();
                     break;
                 case "3":
-                    ListarMetodos.listaPessoas();
+                    cadastroDeLivros.CadastroLivro();
                     break;
                 case "4":
-                    ListarMetodos.listaLivros();;
+                    ListarMetodos.listaPessoas();
                     break;
+
                 case "5":
-                    gerenciamentoDeVendas.vendaLivros();
+                    ListarMetodos.listaEditora();
                     break;
                 case "6":
-                    deleteClienteAutorLivro.deleteClienteAutor();
+                    ListarMetodos.listaLivros();;
                     break;
                 case "7":
+                    gerenciamentoDeVendas.vendaLivros();
+                    break;
+                case "8":
+                    deleteClienteAutorLivro.deleteClienteAutor();
+                    break;
+                case "9":
                     deleteLivro.deleteLivro();
                     break;
-                case "9":  
+                case "10":  
+
+                    
+                case "0":
                     System.out.println("Encerrando o programa...");
-                    break;
-                case "10":
                     break;
                 default:
                     System.out.println();
@@ -81,7 +93,7 @@ public class Main {
                     System.out.println();
                     break;
             }
-        } while (!opcao.equals("9"));  
+        } while (!opcao.equals("0"));  
         
         scanner.close();
     }

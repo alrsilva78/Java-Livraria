@@ -109,7 +109,7 @@ public class CadastroDeLivros extends Produto implements interfaces.Start{
 
         while (!getConfirma().equalsIgnoreCase("s") && !getConfirma().equalsIgnoreCase("n")) {
             System.out.println();
-            System.out.print("Deseja cadastrar outro Livro [s/n]: ");
+            System.out.print("Deseja cadastrar outro Livro [s/n]?: ");
             setConfirma(scanner.nextLine().trim());
     
             if (getConfirma().equalsIgnoreCase("s")) {

@@ -31,7 +31,6 @@ public class ListarMetodos extends model.Pessoa{
         }
     }
 
-
     // Método para listar e retornar autores
     public static List<String> listaAutor() {
         List<String> listaDeAutores = new ArrayList<>();
@@ -67,6 +66,7 @@ public class ListarMetodos extends model.Pessoa{
             System.out.println();
             System.out.println("Ainda não há Livros cadastrados!");
         } else {
+            System.out.println();
             System.out.println("Lista de Livros cadastrados:");
             for (model.Produto livro : CadastroDeLivros.getListaLivros()) {
                 System.out.println("=======================");
@@ -79,6 +79,23 @@ public class ListarMetodos extends model.Pessoa{
                 System.out.println();
             }
         }
+    }
+
+    // Método para listar Editoras cadastradas
+
+    public static void listaEditora (){
+
+        if (CadastroEditora.getListEditora().isEmpty()) {
+            System.out.println();
+            System.out.println("Ainda não há Editoras cadastradas!");
+        }else{
+        System.out.println();
+        System.out.println("Lista de Editoras cadastradas:");
+        for (model.Editora editora : CadastroEditora.getListEditora()) {
+            System.out.println("=======================");
+            System.out.println("Editora: " + editora.getNomeEditora());
+        }
+    }
     }
 }
 

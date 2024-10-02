@@ -54,6 +54,8 @@ public class GerenciamentoDeVendas {
         
         // Chama o método para pegar o nome do livro a ser comprado
         vendas.venda();
+
+       
         
     
 }}
