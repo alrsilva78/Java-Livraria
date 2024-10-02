@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import model.Main;
 
-public class CadastroDePessoas extends model.Pessoa implements interfaces.Start{
+public class CadastroDePessoas extends model.Pessoa {
 
     // Construtor
     public CadastroDePessoas(String nomeDaPessoa, String cpf, int idade, String tipo) {
@@ -20,15 +19,6 @@ public class CadastroDePessoas extends model.Pessoa implements interfaces.Start{
     private String cadCpf;
     private int cadIdade;
     private String cadTipo;
-
-    // Implementando a Interface
-
-    @Override
-    public void seqIniciar() {
-
-        System.out.println("1 - Comece Cadastranto um Cliente");
-        System.out.println("2 - Cadastre um Autor");
-    }
 
     // Lista de pessoas
     private static List<model.Pessoa> listaPessoas = new ArrayList<>();

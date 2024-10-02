@@ -7,7 +7,7 @@ import java.util.Scanner;
 import model.Produto;
 
 
-public class CadastroDeLivros extends Produto implements interfaces.Start{
+public class CadastroDeLivros extends Produto {
     
     private String nomeLivro;
     private String nomeAutor;
@@ -22,15 +22,6 @@ public class CadastroDeLivros extends Produto implements interfaces.Start{
 
      public CadastroDeLivros(String nomeDoLivro,String nomeDoAutor, String nomeDaEditora, String dataDaPublicacao, double valorDoLivro, int estoqueDoLivro) {
         super(nomeDoLivro, nomeDoAutor, nomeDaEditora, dataDaPublicacao, valorDoLivro, estoqueDoLivro);
-    }
-
-    // Impementando a Interface
-
-    @Override
-    public void seqIniciar() {
-
-        System.out.println("3 - Cadastre um livro com estoque");
-        System.out.println("4 - Realize uma compra");
     }
 
     // Lista de livros
@@ -69,6 +60,7 @@ public class CadastroDeLivros extends Produto implements interfaces.Start{
         System.out.println();
         System.out.print("Nome do Livro: ");
         setNomeLivro(scanner.nextLine());
+        System.out.println();
         System.out.print("Nome do Autor... ");
        
         setNomeAutor("");
@@ -82,12 +74,32 @@ public class CadastroDeLivros extends Produto implements interfaces.Start{
             autorValido = true;  // Se o autor estiver na lista, a validação passa
         } else {
             System.out.println();
-            System.out.println("O autor não faz parte da lista. Tente novamente.");
+            System.out.println("O Autor " + getNomeAutor() + " não faz parte da lista. Tente novamente.");
         }
     }
-        
-        System.out.print("Nome da Editora: ");
+
+
+        setNomeEitora("");
+        boolean editoraValida = false;
+        System.out.println();
+        System.out.println("Nome da Editora... ");
+        List<String> listaDeEditora = ListarMetodos.listaEditoras();;
+
+        System.out.println();
+        ListarMetodos.listaEditora();
+
+        while (!editoraValida) {
+        System.out.print( "Nome da Editora: ");
         setNomeEitora(scanner.nextLine());
+      
+        if (listaDeEditora.contains(getNomeEitora())) {
+            editoraValida = true;  // Se a Editora estiver na lista, a validação passa
+        } else {
+            System.out.println();
+            System.out.println("A Editora " + getNomeEitora() + " não faz parte da lista. Tente novamente.");
+        }
+        }
+       
         System.out.print("Data da Publicação: ");
         setDataPublicacao(scanner.nextLine());
         System.out.print("Valor do Livro: R$ ");

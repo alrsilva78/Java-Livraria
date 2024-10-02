@@ -8,12 +8,17 @@ public class Venda implements TotalPagar {
     private String venda;
     private String nomeDoLivroParaCompra;
 
+
+    // Implementando interface
+
     public void totalPagar (){
     }
 
     public void totalPagar (double valor){
         System.out.println( "Valor total a pagar = R$" + valor);
     }
+
+    // -----------------------------
 
     public void venda() {
 

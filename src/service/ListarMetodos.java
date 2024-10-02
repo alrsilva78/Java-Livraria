@@ -43,12 +43,26 @@ public class ListarMetodos extends model.Pessoa{
             }
         }
 
-        return listaDeAutores;  // Retorna a lista de nomes dos autores
+        return listaDeAutores;  // Retorna a lista de nomes das Editoras
     }
+
+
+     // Método para listar e retornar Editoras
+     public static List<String> listaEditoras() {
+        List<String> listaDeEditoras = new ArrayList<>();
+        System.out.print("Escolha uma na Lista de Editoras disponíveis:");
+       
+        for (model.Editora editora : CadastroEditora.getListEditora()){
+            listaDeEditoras.add(editora.getNomeEditora());
+            
+        }
+        return listaDeEditoras;  // Retorna a lista de nomes das Editoras
+        
+    }
+
 
     public static List<String> listaClienteVendas() {
         List<String> listaDeClienteVendas = new ArrayList<>();
-        System.out.println();
         System.out.println("Escolha um na Lista de Clientes disponíveis:");
         for (model.Pessoa pessoa : CadastroDePessoas.getListaPessoas()) {
             if (pessoa.getTipo().equals("Cliente")) {
@@ -89,10 +103,10 @@ public class ListarMetodos extends model.Pessoa{
             System.out.println();
             System.out.println("Ainda não há Editoras cadastradas!");
         }else{
-        System.out.println();
-        System.out.println("Lista de Editoras cadastradas:");
+            System.out.println();
+            System.out.println("Lista de Editoras cadastradas:");
         for (model.Editora editora : CadastroEditora.getListEditora()) {
-            System.out.println("=======================");
+            // System.out.println("=======================");
             System.out.println("Editora: " + editora.getNomeEditora());
         }
     }

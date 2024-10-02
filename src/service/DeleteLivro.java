@@ -28,7 +28,7 @@ public class DeleteLivro {
         if (removerLivroPorNome(getLivroDelete())) {
             System.out.println("Livro " + getLivroDelete() + " excluído com sucesso!");    
         }else {
-            System.out.println("Livro não encontrado.");
+            System.out.println("Livro " + getLivroDelete() + " não encontrado.");
         }
     }
 
@@ -46,16 +46,6 @@ public class DeleteLivro {
         }
         return encontrado;
     }
-
-
-
-
-
-
-
-
-
-
 
 
     public String getLivroDelete() {

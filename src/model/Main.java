@@ -6,25 +6,21 @@ import interfaces.Start;
 import service.CadastroDePessoas;
 import service.CadastroEditora;
 import service.DeleteClienteAutor;
+import service.DeleteEditora;
 import service.DeleteLivro;
 import service.GerenciamentoDeVendas;
 import service.CadastroDeLivros;
 import service.ListarMetodos;
 
-public class Main {
+public class Main implements Start{
 
     public static void main(String[] args) {
   
-        Start  cadastroDePessoasInterface = new CadastroDePessoas(null, null, 0, null);
-        Start cadastrodeLivrosInterface = new CadastroDeLivros(null, null, null, null, 0, 0);
-
-        cadastroDePessoasInterface.comeco();
-        cadastroDePessoasInterface.seqIniciar();
-        cadastrodeLivrosInterface.seqIniciar();
-
+        Main main = new Main();
         GerenciamentoDeVendas gerenciamentoDeVendas = new GerenciamentoDeVendas();
         DeleteClienteAutor deleteClienteAutorLivro = new DeleteClienteAutor();
         DeleteLivro deleteLivro = new DeleteLivro();
+        DeleteEditora deleteEditora = new DeleteEditora();
         CadastroDePessoas cadastroDePessoas = new CadastroDePessoas(null, null, 0, null);
         CadastroDeLivros cadastroDeLivros = new CadastroDeLivros(null, null, null, null, 0, 0);
         CadastroEditora cadastroDeEditora = new CadastroEditora(null);
@@ -32,6 +28,12 @@ public class Main {
         String opcao;  
 
         Scanner scanner = new Scanner(System.in);
+
+        // Implementando interface
+
+        main.comeco();
+
+        // -------------------------
 
         do {
             System.out.println();
@@ -48,6 +50,7 @@ public class Main {
                                 "[7] -> Gerenciamento de Vendas\n" +
                                 "[8] -> Excluir Pessoas\n" +
                                 "[9] -> Excluir Livro\n" +
+                                "[10] -> Excluir Editora\n" +
                                 "[0] -> Sair");
             System.out.print("Opção: ");
             opcao = scanner.nextLine();
@@ -81,9 +84,9 @@ public class Main {
                 case "9":
                     deleteLivro.deleteLivro();
                     break;
-                case "10":  
-
-                    
+                case "10": 
+                    deleteEditora.deleteEditora();
+                    break;
                 case "0":
                     System.out.println("Encerrando o programa...");
                     break;
@@ -96,6 +99,9 @@ public class Main {
         } while (!opcao.equals("0"));  
         
         scanner.close();
+    }
+    @Override
+    public void seqIniciar() {
     }
 }
 
