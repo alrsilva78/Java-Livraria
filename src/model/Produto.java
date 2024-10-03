@@ -1,6 +1,9 @@
 package model;
 
 
+// Classe abstract com atributos para Produto/Livro
+
+
 public abstract class Produto {
 
     private String nomeDoLivro;

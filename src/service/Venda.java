@@ -9,14 +9,13 @@ public class Venda implements TotalPagar {
 
     private String venda;
     private String nomeDoLivroParaCompra;
-    private String nomeEditoraVenda;
 
-    // Implementando interface
-    public void totalPagar() {}
-
-    public void totalPagar(double valor) {
-        System.out.println("Valor total a pagar = R$" + valor);
+    // Implementação do método pagamento da interface TotalPagar
+    @Override
+    public void pagamento() {
+        System.out.println("Processando o pagamento...");
     }
+
 
     public void realizarVenda() {
         Scanner scanner = new Scanner(System.in);
@@ -26,7 +25,8 @@ public class Venda implements TotalPagar {
             setNomeDoLivroParaCompra(getVenda());
 
             if (!processarVenda(scanner)) {
-                System.out.printf("O livro " + nomeDoLivroParaCompra + " não foi encontrado no catálogo.");
+                // Se não encontrar livro, continuar perguntando
+                System.out.printf("O livro " + nomeDoLivroParaCompra + " não foi encontrado no catálogo.\n");
             } else {
                 break; // Venda realizada com sucesso
             }
@@ -34,42 +34,57 @@ public class Venda implements TotalPagar {
     }
 
     private boolean processarVenda(Scanner scanner) {
+        List<model.Produto> livrosEncontrados = new ArrayList<>();
+
+        // Coletar todos os livros com o mesmo nome
         for (model.Produto livro : CadastroDeLivros.getListaLivros()) {
             if (livro.getNomeDoLivro().trim().equalsIgnoreCase(getNomeDoLivroParaCompra())) {
-                return realizarTransacao(scanner, livro);
+                livrosEncontrados.add(livro);
             }
         }
-        return false; // Livro não encontrado
+
+        if (livrosEncontrados.isEmpty()) {
+            return false; // Livro não encontrado
+        }
+
+        // Se houver livros com o mesmo nome, permitir a escolha do livro
+        return realizarTransacao(scanner, livrosEncontrados);
     }
 
-    private boolean realizarTransacao(Scanner scanner, model.Produto livro) {
-        if (livro.getEstoqueDoLivro() <= 0) {
-            System.out.printf("Não é possível realizar a venda. O livro " + livro.getNomeDoLivro() + " está sem estoque.");
+    private boolean realizarTransacao(Scanner scanner, List<model.Produto> livros) {
+        // Exibir todos os livros disponíveis e seus estoques
+        for (int i = 0; i < livros.size(); i++) {
+            model.Produto livro = livros.get(i);
+            System.out.println((i + 1) + ". " + livro.getNomeDoLivro() + " - Autor: " + livro.getNomeDoAutor() + " - Editora: " + livro.getNomeDaEditora() +  " - Estoque: " + livro.getEstoqueDoLivro());
+        }
+
+        // Perguntar ao usuário qual livro ele deseja comprar
+        System.out.print("Escolha o número do livro que deseja comprar: ");
+        int escolha = Integer.parseInt(scanner.nextLine()) - 1;
+
+        // Validar a escolha
+        if (escolha < 0 || escolha >= livros.size()) {
+            System.out.println("Escolha inválida.");
+            return false;
+        }
+
+        model.Produto livroSelecionado = livros.get(escolha);
+
+        if (livroSelecionado.getEstoqueDoLivro() <= 0) {
+            System.out.println();
+            System.out.printf("Não é possível realizar a venda. O livro " + livroSelecionado.getNomeDoLivro() + " - Editora: " + livroSelecionado.getNomeDaEditora() +  " está sem estoque.");
+            System.out.println();
             return true; // Livro encontrado, mas sem estoque
         }
 
-        List<String> editorasDisponiveis = new ArrayList<>();
-        editorasDisponiveis.add(livro.getNomeDaEditora());
-
-        boolean escolheEditora = false;
-        while (!escolheEditora) {
-            System.out.println("Escolha uma Editora da lista: ");
-            editorasDisponiveis.forEach(editora -> System.out.println("Editora: " + editora));
-
-            System.err.print("Nome da Editora: ");
-            setNomeEditoraVenda(scanner.nextLine());
-            System.out.println();
-
-            if (editorasDisponiveis.contains(getNomeEditoraVenda())) {
-                livro.setEstoqueDoLivro(livro.getEstoqueDoLivro() - 1);
-                System.out.println("Venda realizada! Estoque atual de '" + livro.getNomeDoLivro() + " Editora: " + getNomeEditoraVenda() + "': " + livro.getEstoqueDoLivro());
-                totalPagar(livro.getValorDoLivro());
-                escolheEditora = true;
-            } else {
-                System.out.println("A Editora " + getNomeEditoraVenda() + " não faz parte da lista...");
-                System.out.println();
-            }
-        }
+        // Realizar a venda diretamente
+        livroSelecionado.setEstoqueDoLivro(livroSelecionado.getEstoqueDoLivro() - 1);
+        System.out.println();
+        System.out.println("Venda realizada! Estoque atual de '" + livroSelecionado.getNomeDoLivro() + " - Editora: " + livroSelecionado.getNomeDaEditora() + "': " + livroSelecionado.getEstoqueDoLivro());
+       // Implementação do método pagamento e totalPagar da interface TotalPagar
+        pagamento();
+        totalPagar(livroSelecionado.getValorDoLivro());
+        
         return true; // Venda realizada
     }
     
@@ -88,13 +103,5 @@ public class Venda implements TotalPagar {
 
     public void setVenda(String venda) {
         this.venda = venda;
-    }
-
-    public String getNomeEditoraVenda() {
-        return nomeEditoraVenda;
-    }
-
-    public void setNomeEditoraVenda(String nomeEditoraVenda) {
-        this.nomeEditoraVenda = nomeEditoraVenda;
     }
 }

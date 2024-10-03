@@ -1,5 +1,8 @@
 package model;
 
+
+// Classe abstract com atributos para Pessoa
+
 public abstract class Pessoa {
 
     private String nomeDaPessoa;

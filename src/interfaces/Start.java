@@ -1,5 +1,7 @@
 package interfaces;
 
+// Interface para ser exibida ao iniciar o Main, com um tutorial
+
 public interface Start {
     void seqIniciar() ;  
     

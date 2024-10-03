@@ -1,5 +1,7 @@
 package model;
 
+// Classe abstract com atributos para Editora
+
 public abstract class Editora {
 
     private String nomeEditora;
