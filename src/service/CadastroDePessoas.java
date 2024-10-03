@@ -67,7 +67,6 @@ public class CadastroDePessoas extends model.Pessoa {
         listaPessoas.add(cliente);
         System.out.println();
         System.out.println(getCadTipo() + " " + getCadNome() + " cadastrado com sucesso!");
-        System.out.println();
 
         while (!getConfirma().equalsIgnoreCase("s")&& !getConfirma().equalsIgnoreCase("n")) {
         System.out.println();
@@ -76,11 +75,11 @@ public class CadastroDePessoas extends model.Pessoa {
 
         if (getConfirma().equalsIgnoreCase("s")) {
             setContinuar("s");
-            System.out.println();}
+            System.out.println();
+        }
 
          else if (getConfirma().equalsIgnoreCase("n")) {
             setContinuar("n"); 
-            System.out.println();
             Scanner scannerReset = new Scanner(System.in);
         
         }    

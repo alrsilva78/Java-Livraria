@@ -51,11 +51,9 @@ public class GerenciamentoDeVendas {
         System.out.println();
         System.out.println("Qual livro deseja comprar? " + nomeCliente + ":");
         ListarMetodos.listaLivros();
-        // System.out.println("Qual editora? ");
-        // ListarMetodos.listaEditora();
         
         // Chama o método para pegar o nome do livro a ser comprado
-        vendas.venda();
+        vendas.realizarVenda();;
 
        
         

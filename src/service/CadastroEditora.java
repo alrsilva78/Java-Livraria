@@ -39,12 +39,12 @@ public class CadastroEditora extends model.Editora {
         setConfirma(scanner.nextLine().trim());
             if (getConfirma().equalsIgnoreCase("s")) {
                 setContinuar("s");
-                System.out.println();
+                // System.out.println();
                 
             }
             else if (getConfirma().equalsIgnoreCase("n")){
                 setContinuar("n");
-                System.out.println();
+                // System.out.println();
 
             } else {
                 System.out.println("Opção inválida. Tente novamente!");

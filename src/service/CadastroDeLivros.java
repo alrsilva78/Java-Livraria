@@ -126,11 +126,12 @@ public class CadastroDeLivros extends Produto {
     
             if (getConfirma().equalsIgnoreCase("s")) {
                 setContinuar("s");
-                System.out.println();}
+                // System.out.println();
+            }
     
              else if (getConfirma().equalsIgnoreCase("n")) {
                 setContinuar("n"); 
-                System.out.println();
+                // System.out.println();
                 Scanner scannerReset = new Scanner(System.in);
             }    
             else {
