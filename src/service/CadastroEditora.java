@@ -1,11 +1,14 @@
 package service;
 
+// Clasee para Cadastro de Editoras
+
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 
-
 public class CadastroEditora extends model.Editora {
+
+    // Constructor
 
     public CadastroEditora(String nomeEditora) {
         super(nomeEditora);
@@ -56,6 +59,9 @@ public class CadastroEditora extends model.Editora {
 
     }
         }
+
+
+    // Getters e Setters
 
     public String getCadNomeEditora() {
         return cadNomeEditora;

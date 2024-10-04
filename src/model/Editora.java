@@ -6,6 +6,7 @@ public abstract class Editora {
 
     private String nomeEditora;
 
+     // Construtor
 
     public Editora (String nomeEditora){
 

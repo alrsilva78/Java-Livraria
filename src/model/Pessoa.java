@@ -10,6 +10,8 @@ public abstract class Pessoa {
     private int idade; 
     private String tipo;
 
+     // Construtor
+
     public Pessoa(String nomeDaPessoa, String cpf, int idade, String tipo) {
         this.nomeDaPessoa = nomeDaPessoa;
         this.cpf = cpf;

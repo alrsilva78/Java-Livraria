@@ -100,6 +100,7 @@ public class Main implements Start{
         
         scanner.close();
     }
+    // Implementando interface
     @Override
     public void seqIniciar() {
     }

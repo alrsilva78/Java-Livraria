@@ -1,5 +1,7 @@
 package service;
 
+// Classe que inicia o Gerenciamento de Vendas
+
 import java.util.Scanner;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class GerenciamentoDeVendas {
             System.out.println();
             System.out.println("Ainda não há Clientes cadastrados! É preciso se cadastrar primeiro!");
             cadastroDePessoas.cadastroCliente();
-            return; // Saída precoce se não há clientes
+            return; 
         } 
         
         boolean clienteValido = false;
@@ -45,7 +47,7 @@ public class GerenciamentoDeVendas {
             System.out.println();
             System.out.println(nomeCliente + ", cadastre um livro antes de realizar a compra!");
             cadastroDeLivros.CadastroLivro();
-            return; // Saída precoce se não há livros
+            return; 
         } 
         
         System.out.println();
@@ -53,9 +55,7 @@ public class GerenciamentoDeVendas {
         ListarMetodos.listaLivros();
         
         // Chama o método para pegar o nome do livro a ser comprado
-        vendas.realizarVenda();;
-
-       
-        
+        vendas.realizarVenda();;    
     
-}}
+    }
+}

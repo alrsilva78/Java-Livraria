@@ -1,12 +1,13 @@
 package service;
 
+// Classe dedicada a exibir uma Lista de Registros
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListarMetodos extends model.Pessoa{
 
     Venda livroVenda = new Venda();
-
 
     public ListarMetodos(String nomeDaPessoa, String cpf, int idade) {
         super(nomeDaPessoa, cpf, idade, "Cliente");
@@ -106,7 +107,6 @@ public class ListarMetodos extends model.Pessoa{
             System.out.println();
             System.out.println("Lista de Editoras cadastradas:");
         for (model.Editora editora : CadastroEditora.getListEditora()) {
-            // System.out.println("=======================");
             System.out.println("Editora: " + editora.getNomeEditora());
         }
     }

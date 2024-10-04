@@ -1,9 +1,10 @@
 package service;
 
+// Classe para Excluir um Livro cadastrado.
+
 import java.util.Iterator;
 import java.util.Scanner;
 import model.Main;
-
 
 public class DeleteLivro {
 
@@ -46,7 +47,6 @@ public class DeleteLivro {
         }
         return encontrado;
     }
-
 
     public String getLivroDelete() {
         return livroDelete;

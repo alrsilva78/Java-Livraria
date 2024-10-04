@@ -1,5 +1,7 @@
 package service;
 
+// Classe para Excluir um Cliente ou Autor cadastrado.
+
 import java.util.Iterator;
 import java.util.Scanner;
 import model.Main;

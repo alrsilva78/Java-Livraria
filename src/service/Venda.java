@@ -1,5 +1,7 @@
 package service;
 
+// Classe que realiza a Venda de Livros
+
 import java.util.Scanner;
 import interfaces.TotalPagar;
 import java.util.List;

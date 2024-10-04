@@ -1,9 +1,10 @@
 package service;
 
+// Clasee para Cadastro de Pessoas
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 
 public class CadastroDePessoas extends model.Pessoa {
 
@@ -92,6 +93,8 @@ public class CadastroDePessoas extends model.Pessoa {
         
     }
 }
+
+    // Getters e Setters
 
     public static List<model.Pessoa> getListaPessoas() {
         return listaPessoas;

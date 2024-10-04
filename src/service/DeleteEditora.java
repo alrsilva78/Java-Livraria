@@ -1,5 +1,7 @@
 package service;
 
+// Classe para Excluir uma Editora cadastrada.
+
 import java.util.Iterator;
 import java.util.Scanner;
 import model.Main;
@@ -50,8 +52,6 @@ public class DeleteEditora {
     public void setEditoraDelete(String editoraDelete) {
         this.editoraDelete = editoraDelete;
     }
-
-
 
     }
 

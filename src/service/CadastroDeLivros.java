@@ -1,5 +1,7 @@
 package service;
 
+// Clasee para Cadastro de Livros
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -19,6 +21,8 @@ public class CadastroDeLivros extends Produto {
     private String confirma;
 
     CadastroDePessoas cadasroDePessoas = new CadastroDePessoas(null, null, 0, null);
+
+    // Constructor
 
      public CadastroDeLivros(String nomeDoLivro,String nomeDoAutor, String nomeDaEditora, String dataDaPublicacao, double valorDoLivro, int estoqueDoLivro) {
         super(nomeDoLivro, nomeDoAutor, nomeDaEditora, dataDaPublicacao, valorDoLivro, estoqueDoLivro);
@@ -126,12 +130,10 @@ public class CadastroDeLivros extends Produto {
     
             if (getConfirma().equalsIgnoreCase("s")) {
                 setContinuar("s");
-                // System.out.println();
             }
     
              else if (getConfirma().equalsIgnoreCase("n")) {
                 setContinuar("n"); 
-                // System.out.println();
                 Scanner scannerReset = new Scanner(System.in);
             }    
             else {
@@ -142,11 +144,6 @@ public class CadastroDeLivros extends Produto {
     }
 }
 
-
-    // public static void listaLivro(){
-        
-    // }
-
     // Método para verificar se existe pelo menos um autor na lista
     private static boolean temAutor() {
         for (model.Pessoa pessoa : CadastroDePessoas.getListaPessoas()) {
@@ -156,6 +153,8 @@ public class CadastroDeLivros extends Produto {
         }
         return false;
     }
+
+    // Getters e Setters
 
     public static List<model.Produto> getListaLivros() {
         return listaLivros;
